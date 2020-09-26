@@ -1,17 +1,29 @@
 {
-  "name": "backspa",
-  "version": "0.0.0",
-  "private": true,
+  "name": "rest-api-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www",
-    "debug": "nodemon --inspect ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makinhs/rest-api-tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makinhs/rest-api-tutorial/issues"
+  },
+  "homepage": "https://github.com/makinhs/rest-api-tutorial#readme",
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.3",
+    "multer": "^1.4.2",
+    "uuid": "^8.3.0"
   }
 }
