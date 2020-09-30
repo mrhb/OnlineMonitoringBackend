@@ -8,7 +8,7 @@ const AuthorizationRouter = require('./authorization/routes.config');
 const UsersRouter = require('./users/routes.config');
 const UnitsRouter = require('./units/routes.config');
 const TrendssRouter = require('./trends/routes.config');
-
+const Root="F:/mr.Hajjar/OnlineMonitoring/UI_SPA/uiSPA/dist/uiSPA"
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Credentials', 'true');
@@ -23,10 +23,16 @@ app.use(function (req, res, next) {
 });
 
 app.use(bodyParser.json());
+app.use(express.static(Root));
+
 AuthorizationRouter.routesConfig(app);
 UsersRouter.routesConfig(app);
 UnitsRouter.routesConfig(app);
 TrendssRouter.routesConfig(app);
+
+app.get('/management/*', (req,res) => {
+    res.sendFile(Root+"/index.html")
+  });
 
 
 app.listen(config.port, function () {
