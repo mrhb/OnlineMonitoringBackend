@@ -11,7 +11,7 @@ exports.routesConfig = function (app) {
     // app.post('/trends', [
     //     TrendsController.insert
     // ]);
-    app.get('/trends', [
+    app.get('/api/trends', [
         // ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         TrendsController.list

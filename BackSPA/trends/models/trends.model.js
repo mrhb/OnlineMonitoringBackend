@@ -4,15 +4,8 @@ const InfluxDb = require('../../common/services/InfluxDb.service').MonitoringDb;
 exports.ReadTrends = () =>{
   return  InfluxDb
     .query(
-      `
-      select 
-      mean(Advance) ,
-      mean(ElecEnergy)
-      from ModbusLogger
-      where time>now() -30d
-      GROUP BY time(5h) FILL(null)
-      
-  `
+
+  `SELECT mean("Oil_P") FROM "ModbusLogger" WHERE time >= now() - 5m GROUP BY time(10s) fill(linear)`
     );
    
   };

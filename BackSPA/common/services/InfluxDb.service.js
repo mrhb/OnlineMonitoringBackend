@@ -8,7 +8,7 @@ const express = require("express");
  */
 const MonitoringDb = new Influx.InfluxDB({
   host: "servertetapower",
-  database: "OnlineMonitoringDb",
+  database: "telegraf",
   // schema: [
   //   {
   //     measurement: "ModbusLogger",
@@ -25,8 +25,8 @@ const MonitoringDb = new Influx.InfluxDB({
 MonitoringDb
   .getDatabaseNames()
   .then((names) => {
-    if (!names.includes("OnlineMonitoringDb")) {
-      return MonitoringDb.createDatabase("OnlineMonitoringDb");
+    if (!names.includes("telegraf")) {
+      return MonitoringDb.createDatabase("telegraf");
     }
   })
  
@@ -40,8 +40,8 @@ MonitoringDb
     MonitoringDb
     .getDatabaseNames()
     .then((names) => {
-        if (!names.includes("OnlineMonitoringDb")) {
-            MonitoringDb.createDatabase("OnlineMonitoringDb");
+        if (!names.includes("telegraf")) {
+            MonitoringDb.createDatabase("telegraf");
             console.log('InfluxDb is Created,connected');
             return MonitoringDb;
         }
