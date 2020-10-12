@@ -23,14 +23,18 @@ app.use(function (req, res, next) {
 });
 
 app.use(bodyParser.json());
-app.use(express.static(Root));
+app.use('/ui',express.static(Root));
 
 AuthorizationRouter.routesConfig(app);
 UsersRouter.routesConfig(app);
 UnitsRouter.routesConfig(app);
 TrendssRouter.routesConfig(app);
 
-app.get('/management/*', (req,res) => {
+app.get('/ui/*', (req,res) => {
+    res.sendFile(Root+"/index.html")
+  });
+
+  app.get('/', (req,res) => {
     res.sendFile(Root+"/index.html")
   });
 

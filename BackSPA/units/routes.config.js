@@ -6,29 +6,29 @@ const config = require('../common/config/env.config');
 const ADMIN = config.permissionLevels.ADMIN;
 const PAID = config.permissionLevels.PAID_USER;
 const FREE = config.permissionLevels.NORMAL_USER;
-
+const baseUrl='/api/units';
 exports.routesConfig = function (app) {
-    app.post('/units', [
+    app.post(baseUrl, [
         unitsController.insert
     ]);
-    app.get('/units', [
+    app.get(baseUrl, [
         ValidationMiddleware.validJWTNeeded,
         PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         unitsController.list
     ]);
-    app.get('/units/:unitId', [
+    app.get(baseUrl+'/:unitId', [
         ValidationMiddleware.validJWTNeeded,
         PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         unitsController.getById
     ]);
-    app.patch('/units/:unitId', [
+    app.patch(baseUrl+'/:unitId', [
         ValidationMiddleware.validJWTNeeded,
         PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         unitsController.patchById
     ]);
-    app.delete('/units/:unitId', [
+    app.delete(baseUrl+'/:unitId', [
         ValidationMiddleware.validJWTNeeded,
         PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
         unitsController.removeById
