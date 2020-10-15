@@ -1,11 +1,11 @@
 // const mongoose = require('../../common/services/mongoose.service').mongoose;
 const InfluxDb = require('../../common/services/InfluxDb.service').MonitoringDb;
-
+const concat= require('./QueryBuilder');
 exports.ReadTrends = () =>{
   return  InfluxDb
     .query(
-
-  `SELECT mean("Oil_P") FROM "ModbusLogger" WHERE time >= now() - 5m GROUP BY time(10s) fill(linear)`
+      concat.concat(["Oil_P" ,"Water_T" ])
+      // `SELECT mean("Oil_P") FROM "ModbusLogger" WHERE time >= now() - 5m GROUP BY time(10s) fill(linear)`
     );
    
   };
