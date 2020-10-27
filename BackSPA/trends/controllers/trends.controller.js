@@ -15,7 +15,7 @@ const crypto = require('crypto');
 
 exports.list = (req, res) => {
 
-    TrendModel.ReadTrends() .then((result) => {
+    TrendModel.ReadTrends(req.body) .then((result) => {
         res.status(200).send(result);
     })
 

@@ -18,6 +18,11 @@ exports.routesConfig = function (app) {
         // ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         TrendsController.list
+    ]); 
+    app.post(baseUrl, [
+        // ValidationMiddleware.validJWTNeeded,
+        // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+        TrendsController.list
     ]);
     // app.get('/trends/:unitId', [
     //     ValidationMiddleware.validJWTNeeded,
@@ -41,4 +46,5 @@ exports.routesConfig = function (app) {
 
 
 app.get(mockUrl,[ trendsMockController.getData]);
+app.post(mockUrl,[ trendsMockController.getData]);
 };
