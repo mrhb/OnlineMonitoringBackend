@@ -17,6 +17,6 @@ endDate.setTime(end);
  + `' AND time < '`
  + endDate.toJSON().toString()
  //+`now() - 5m `
- +`' GROUP BY time(10s) fill(linear)`;
+ +`' GROUP BY time(10m) fill(linear)`;
   return  result;
 }

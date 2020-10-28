@@ -8,5 +8,11 @@ const getJsonData = function (basePathToData, filename) {
 exports.getData =(req, res) => {
  // req.body
   var data = getJsonData(__dirname, 'mockData.json');
+  var i;
+for (i = 0; i < data.length; i++) {
+  data[i].Oil_P=data[i].Oil_P*Math.random();  
+  data[i].Water_T=data[i].Oil_P*Math.random();  
+
+}
     return res.send(data);
   };
