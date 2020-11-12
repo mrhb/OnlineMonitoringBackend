@@ -3,6 +3,7 @@ const InfluxDb = require('../../common/services/InfluxDb.service').MonitoringDb;
 const concat= require('./QueryBuilder');
 exports.ReadTrends = (seriesInfo) =>{
   var metrics= new Array(seriesInfo.metricsInfo.length);
+  var unitId=seriesInfo.metricsInfo[0].Unit.UnitId;
 
   for (i in seriesInfo.metricsInfo) {
     metrics[i]= seriesInfo.metricsInfo[i].Measurment;
@@ -10,7 +11,7 @@ exports.ReadTrends = (seriesInfo) =>{
 
   return  InfluxDb
     .query(
-      concat.concat(metrics,seriesInfo.startDate,seriesInfo.endDate)
+      concat.concat(metrics,seriesInfo.startDate,seriesInfo.endDate,unitId)
       // `SELECT mean("Oil_P") FROM "ModbusLogger" WHERE time >= now() - 5m GROUP BY time(10s) fill(linear)`
     );   
   };

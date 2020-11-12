@@ -1,4 +1,4 @@
-exports.concat=(metrics,start,end)=>
+exports.concat=(metrics,start,end,UnitId)=>
 {
 
 var startDate = new Date();
@@ -14,7 +14,8 @@ console.log("endDate: "+endDate);
  let  caonc=metrics.map(el => `mean("` + el+`")` + `AS "` +el+`"`).join(", ")
 
   let result= `SELECT `+ caonc +` FROM "ModbusLogger"  ` +
- `WHERE time >= '`
+  `WHERE  ("UnitId" = '`+UnitId+`') AND time >= '`
+//`WHERE time >= '`
  + startDate.toJSON().toString()
  + `' AND time < '`
  + endDate.toJSON().toString()
