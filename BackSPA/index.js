@@ -8,6 +8,7 @@ const AuthorizationRouter = require('./authorization/routes.config');
 const UsersRouter = require('./users/routes.config');
 const UnitsRouter = require('./units/routes.config');
 const TrendssRouter = require('./trends/routes.config');
+const SidebarRouter = require('./sidebar/routes.config');
 //const Root="F:/mr.Hajjar/OnlineMonitoring/UI_SPA/uiSPA/dist/uiSPA"
 const Root=__dirname+'\\uiSPA_Prod';
 app.use(function (req, res, next) {
@@ -30,15 +31,15 @@ AuthorizationRouter.routesConfig(app);
 UsersRouter.routesConfig(app);
 UnitsRouter.routesConfig(app);
 TrendssRouter.routesConfig(app);
+SidebarRouter.routesConfig(app);
 
 app.get('/ui/*', (req,res) => {
     res.sendFile(Root+"/index.html")
   });
 
-  app.get('/', (req,res) => {
-    res.sendFile(Root+"/index.html")
-  });
-
+app.get('/', (req,res) => {
+res.sendFile(Root+"/index.html")
+});
 
 app.listen(config.port, function () {
     console.log('app listening at port %s', config.port);
