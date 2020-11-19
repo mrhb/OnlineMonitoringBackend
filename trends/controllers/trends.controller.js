@@ -11,6 +11,7 @@ const crypto = require('crypto');
 //         .then((result) => {
 //             res.status(201).send({id: result._id});
 //         });
+
 // };
 
 exports.list = (req, res) => {
