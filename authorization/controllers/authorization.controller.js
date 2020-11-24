@@ -15,7 +15,12 @@ exports.login = (req, res) => {
         res.status(201).send({
             accessToken: token, 
             refreshToken: refresh_token,
-            username: req.body.userId
+            id: req.body.userId,
+            firstName:  req.body.firstName,
+            lastName: req.body.lastName,
+            username:req.body.email,
+            role: req.body.permissionLevel>0?"admin":"user",
+            token: token
         });
     } catch (err) {
         res.status(500).send({errors: err});
