@@ -7,7 +7,6 @@ const userSchema = new Schema({
     email: String,
     password: String,
     permissionLevel: Number
-    
 });
 
 userSchema.virtual('id').get(function () {
@@ -51,9 +50,23 @@ exports.createUser = (userData) => {
     {id:3,unitCount: 3, name: 'mrhb' ,email:'dfsced_def@yahoo.com' ,loginId:'mdfrhb',  lang:'En',conn:1,reportsM:true,reportsW:true,api:true,isadmin:false},      
   ];
 
-exports.list = (perPage, page) => {
+// exports.list = (perPage, page) => {
+//     return new Promise((resolve, reject) => {
+//         User.find()
+//             .limit(perPage)
+//             .skip(perPage * page)
+//             .exec(function (err, users) {
+//                 if (err) {
+//                     reject(err);
+//                 } else {
+//                     resolve(mockusers);
+//                 }
+//             })
+//     });
+// };
 
-   
+
+exports.list = (perPage, page) => {
     return new Promise((resolve, reject) => {
         User.find()
             .limit(perPage)
@@ -62,7 +75,7 @@ exports.list = (perPage, page) => {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(mockusers);
+                    resolve(users);
                 }
             })
     });

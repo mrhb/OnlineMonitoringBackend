@@ -29,8 +29,8 @@ exports.routesConfig = function (app) {
         UsersController.patchById
     ]);
     app.delete(baseUrl+'/:userId', [
-        ValidationMiddleware.validJWTNeeded,
-        PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
+        // ValidationMiddleware.validJWTNeeded,
+        // PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
         UsersController.removeById
     ]);
 };
