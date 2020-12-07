@@ -27,7 +27,7 @@ exports.list = (req, res) => {
 };
 
 exports.getById = (req, res) => {
-    unitModel.findById(req.params.userId)
+    unitModel.findById(req.params.unitId)
         .then((result) => {
             res.status(200).send(result);
         });
@@ -39,10 +39,10 @@ exports.patchById = (req, res) => {
     //     req.body.password = salt + "$" + hash;
     // }
 
-    // unitModel.patchUser(req.params.userId, req.body)
-    //     .then((result) => {
-    //         res.status(204).send({});
-    //     });
+    unitModel.patchunit(req.params.unitId, req.body)
+        .then((result) => {
+            res.status(204).send({});
+        });
 
 };
 

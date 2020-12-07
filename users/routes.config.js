@@ -17,15 +17,15 @@ exports.routesConfig = function (app) {
         UsersController.list
     ]);
     app.get(baseUrl+'/:userId', [
-        ValidationMiddleware.validJWTNeeded,
-        PermissionMiddleware.minimumPermissionLevelRequired(FREE),
-        PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+        // ValidationMiddleware.validJWTNeeded,
+        // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+        // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         UsersController.getById
     ]);
     app.patch(baseUrl+'/:userId', [
-        ValidationMiddleware.validJWTNeeded,
-        PermissionMiddleware.minimumPermissionLevelRequired(FREE),
-        PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+        // ValidationMiddleware.validJWTNeeded,
+        // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+        // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         UsersController.patchById
     ]);
     app.delete(baseUrl+'/:userId', [

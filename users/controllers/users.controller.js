@@ -6,8 +6,8 @@ exports.insert = (req, res) => {
     let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
     req.body.password = salt + "$" + hash;
     const user = {
-        firstName: req.body.firstname,
-        lastName: req.body.lastname,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
         password:req.body.password,
         permissionLevel: 2
