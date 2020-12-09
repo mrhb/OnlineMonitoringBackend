@@ -11,7 +11,7 @@ const unitSchema = new Schema({
   state:Boolean,
   deviceType:{
     type: String,
-    enum: ['minit','amf25','teta']
+    enum: ['mint','amf25','teta']
     },
   groups: String,
   customer: String,
@@ -22,7 +22,7 @@ const unitSchema = new Schema({
 
 
 const Unit = mongoose.model('units', unitSchema);
-exports.createColor = (unitData) => {
+exports.createUnit = (unitData) => {
     const unit = new Unit(unitData);
     return unit.save();
 };

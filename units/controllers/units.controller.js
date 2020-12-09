@@ -6,7 +6,7 @@ exports.insert = (req, res) => {
     // let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
     // req.body.password = salt + "$" + hash;
     // req.body.permissionLevel = 1;
-    unitModel.createColor(req.body)  .then((result) => {
+    unitModel.createUnit(req.body)  .then((result) => {
         res.status(201).send({id: result._id});
     });
 };
@@ -47,7 +47,7 @@ exports.patchById = (req, res) => {
 };
 
 exports.removeById = (req, res) => {
-    unitModel.removeById(req.params.userId)
+    unitModel.removeById(req.params.unitId)
         .then((result)=>{
             res.status(204).send({});
         });
