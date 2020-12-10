@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const AuthorizationRouter = require('./authorization/routes.config');
 const UsersRouter = require('./users/routes.config');
 const UnitsRouter = require('./units/routes.config');
+const GroupsRouter = require('./groups/routes.config');
 const TrendssRouter = require('./trends/routes.config');
 const SidebarRouter = require('./sidebar/routes.config');
 //const Root="F:/mr.Hajjar/OnlineMonitoring/UI_SPA/uiSPA/dist/uiSPA"
@@ -30,6 +31,7 @@ app.use('/ui',express.static(Root));
 AuthorizationRouter.routesConfig(app);
 UsersRouter.routesConfig(app);
 UnitsRouter.routesConfig(app);
+GroupsRouter.routesConfig(app);
 TrendssRouter.routesConfig(app);
 SidebarRouter.routesConfig(app);
 
