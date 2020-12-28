@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(bodyParser.json());
-app.use('/ui',express.static(Root));
+app.use('/',express.static(Root));
 
 AuthorizationRouter.routesConfig(app);
 UsersRouter.routesConfig(app);
@@ -35,7 +35,7 @@ GroupsRouter.routesConfig(app);
 TrendssRouter.routesConfig(app);
 SidebarRouter.routesConfig(app);
 
-app.get('/ui/*', (req,res) => {
+app.get('/*', (req,res) => {
     res.sendFile(Root+"/index.html")
   });
 
