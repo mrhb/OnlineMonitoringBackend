@@ -7,7 +7,7 @@ const express = require("express");
  * it some information about the schema we're writing.
  */
 const MonitoringDb = new Influx.InfluxDB({
-  host: "servertetapower",
+  host: "localhost",
   database: "telegraf",
   // schema: [
   //   {
