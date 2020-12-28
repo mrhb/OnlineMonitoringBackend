@@ -14,7 +14,7 @@ console.log("endDate: "+endDate);
  let  caonc=metrics.map(el => `mean("` + el+`")` + `AS "` +el+`"`).join(", ")
 
   let result= `SELECT `+ caonc +` FROM "ModbusLogger"  ` +
-  `WHERE  ("UnitId" = '`+UnitId+`') AND time >= '`
+  `WHERE  ("Id" = '`+UnitId+`') AND time >= '`
 //`WHERE time >= '`
  + startDate.toJSON().toString()
  + `' AND time < '`

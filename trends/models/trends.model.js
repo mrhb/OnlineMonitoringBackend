@@ -3,7 +3,7 @@ const InfluxDb = require('../../common/services/InfluxDb.service').MonitoringDb;
 const concat= require('./QueryBuilder');
 exports.ReadTrends = (seriesInfo) =>{
   var metrics= new Array(seriesInfo.metricsInfo.length);
-  var unitId=seriesInfo.metricsInfo[0].Unit.UnitId;
+  var unitId=seriesInfo.metricsInfo[0].Unit.id;
 
   for (i in seriesInfo.metricsInfo) {
     metrics[i]= seriesInfo.metricsInfo[i].Measurment;

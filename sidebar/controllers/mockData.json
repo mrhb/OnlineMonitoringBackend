@@ -2,9 +2,9 @@
 "GroupId":1,
 "GroupName":"CharmShahr",
 "UnitsInfo":[
-    { "UnitId": 1 , "UnitName": "MAN 5" ,"UnitType": "Classic"},
-    { "UnitId": 7 , "UnitName": "MAN 7" ,"UnitType": "minit"  },
-    { "UnitId": 8 , "UnitName": "MAN 8" ,"UnitType": "minit"  },
-    { "UnitId": 20, "UnitName": "MAN 20","UnitType": "minit"  }
+    { "id": 1 , "name": "MAN 5" ,"deviceType": "Classic"},
+    { "id": 7 , "name": "MAN 7" ,"deviceType": "minit"  },
+    { "id": 8 , "name": "MAN 8" ,"deviceType": "minit"  },
+    { "id": 20, "name": "MAN 20","deviceType": "minit"  }
     ]
 }]

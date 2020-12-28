@@ -20,6 +20,9 @@ const unitSchema = new Schema({
   comm:Boolean,
 });
 
+unitSchema.virtual('id').get(function () {
+    return this._id.toHexString();
+});
 
 const Unit = mongoose.model('units', unitSchema);
 exports.createUnit = (unitData) => {

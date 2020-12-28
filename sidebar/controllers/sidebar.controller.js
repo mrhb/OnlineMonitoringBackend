@@ -1,5 +1,10 @@
 //const UserModel = require('../models/users.model');
 const SidebarModel = require('../models/sidebar.model');
+
+const mongoose = require ('mongoose');
+// const unitModel = mongoose.model('units');
+const unitModel = require('../../units/models/Units.model.js');
+
 const crypto = require('crypto');
 
 // exports.insert = (req, res) => {
@@ -14,10 +19,25 @@ const crypto = require('crypto');
 // };
 
 exports.list = (req, res) => {
-
-    SidebarModel.Readsidebar(req.body) .then((result) => {
-        res.status(200).send(result);
-    })
+    
+    let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
+    let page = 0;
+    if (req.query) {
+        if (req.query.page) {
+            req.query.page = parseInt(req.query.page);
+            page = Number.isInteger(req.query.page) ? req.query.page : 0;
+        }
+    }
+    
+    unitModel.list(limit, page)
+        .then((result) => {
+          var item=  [{
+                "GroupId":1,
+                "GroupName":"CharmShahr",
+                "UnitsInfo":result
+                }];
+            res.status(200).send(item);
+        })
 
 };
 
