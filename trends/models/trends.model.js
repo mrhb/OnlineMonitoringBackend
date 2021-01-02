@@ -16,6 +16,18 @@ exports.ReadTrends = (seriesInfo) =>{
     );   
   };
   
+
+  exports.ReadStatus= () =>{
+   
+    return  InfluxDb
+      .query(
+        `SELECT * FROM "ModbusLogger" GROUP BY * ORDER BY DESC LIMIT 1
+        `
+        );   
+      };
+      // `SELECT last("yellowAlarm") AS "yellowAlarm" , last("status")  AS "state", last("redAlarm")  AS "redAlarm"  FROM "ModbusLogger" WHERE $timeFilter GROUP BY "Id"`
+
+
 // const Schema = mongoose.Schema;
 
 // const userSchema = new Schema({

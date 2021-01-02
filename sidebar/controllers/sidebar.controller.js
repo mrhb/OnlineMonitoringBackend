@@ -1,22 +1,11 @@
-//const UserModel = require('../models/users.model');
+var moment = require("moment");
+const mongoose = require ('mongoose');
 const SidebarModel = require('../models/sidebar.model');
 
-const mongoose = require ('mongoose');
-// const unitModel = mongoose.model('units');
 const unitModel = require('../../units/models/Units.model.js');
+const trendsModel = require('../../trends/models/trends.model.js');
 
 const crypto = require('crypto');
-
-// exports.insert = (req, res) => {
-//     let salt = crypto.randomBytes(16).toString('base64');
-//     let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
-//     req.body.password = salt + "$" + hash;
-//     req.body.permissionLevel = 1;
-//     UserModel.createUser(req.body)
-//         .then((result) => {
-//             res.status(201).send({id: result._id});
-//         });
-// };
 
 exports.list = (req, res) => {
     
@@ -41,6 +30,63 @@ exports.list = (req, res) => {
 
 };
 
+
+
+exports.unitsStatus = (req, res) => {
+    
+    let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
+    let page = 0;
+    if (req.query) {
+        if (req.query.page) {
+            req.query.page = parseInt(req.query.page);
+            page = Number.isInteger(req.query.page) ? req.query.page : 0;
+        }
+    }
+    
+trendsModel.ReadStatus().then(
+        (statuses)=>
+        {
+            unitModel.list(limit, page)
+            .then((result) => {
+
+                const merged = result.map(itm => {
+                    var matched=statuses.find((item) => (item.Id === itm.id) && item);
+
+                    
+                    // return {matched,itm};
+                    if(matched)
+                    {
+                        // var start_date = moment(matched.time, 'YYYY-MM-DD HH:mm:ss');
+                        // var end_date = moment();
+                        var elapsed =  	moment(matched.time, 'YYYY-MM-DD HH:mm:ss').calendar() ;
+                            return{
+                                "id":itm.id,
+                                "name":itm.name,
+                                "state":matched.state,
+                                "redAlarm":matched.redAlarm,
+                                "yellowAlarm":matched.yellowAlarm,
+                                "time":matched.time,
+                                "elapsed": elapsed
+                            };
+                    }
+                        else
+                        return{
+                            "id":itm.id,
+                            "name":itm.name,
+                            "state":"NoData",
+                            "redAlarm":false,
+                            "yellowAlarm":false,
+                            "time":"",
+                            "elapsed": ""};
+
+                });
+                    console.log(merged);
+                    res.status(200).send(merged);
+                })
+            }
+        )
+
+};
 // exports.getById = (req, res) => {
 //     UserModel.findById(req.params.userId)
 //         .then((result) => {

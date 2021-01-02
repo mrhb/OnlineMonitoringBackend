@@ -23,7 +23,7 @@ exports.routesConfig = function (app) {
     app.post(baseUrl, [
         // ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
-        sidebarController.list
+        sidebarController.unitsStatus
     ]);
     // app.get('/sidebar/:unitId', [
     //     ValidationMiddleware.validJWTNeeded,
