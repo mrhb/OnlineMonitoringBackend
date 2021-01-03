@@ -62,11 +62,13 @@ trendsModel.ReadStatus().then(
                             return{
                                 "id":itm.id,
                                 "name":itm.name,
-                                "state":matched.state,
+                                "state":matched.status,
                                 "redAlarm":matched.redAlarm,
                                 "yellowAlarm":matched.yellowAlarm,
                                 "time":matched.time,
-                                "elapsed": elapsed
+                                "elapsed": elapsed,
+                                "lat":itm.lat,
+                                "long":itm.long
                             };
                     }
                         else
@@ -77,7 +79,10 @@ trendsModel.ReadStatus().then(
                             "redAlarm":false,
                             "yellowAlarm":false,
                             "time":"",
-                            "elapsed": ""};
+                            "elapsed": "",
+                            "lat":itm.lat,
+                            "long":itm.long
+                        };
 
                 });
                     console.log(merged);
