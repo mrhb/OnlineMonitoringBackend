@@ -21,7 +21,7 @@ exports.ReadTrends = (seriesInfo) =>{
    
     return  InfluxDb
       .query(
-        `SELECT * FROM "ModbusLogger" GROUP BY * ORDER BY DESC LIMIT 1
+        `SELECT * FROM "ModbusLogger" GROUP BY "Id" ORDER BY DESC LIMIT 1
         `
         );   
       };
