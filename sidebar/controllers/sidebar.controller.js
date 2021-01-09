@@ -1,11 +1,10 @@
 var moment = require("moment");
-const mongoose = require ('mongoose');
-const SidebarModel = require('../models/sidebar.model');
-
-const unitModel = require('../../units/models/Units.model.js');
 const trendsModel = require('../../trends/models/trends.model.js');
 
-const crypto = require('crypto');
+const unitModel = require('../../units/models/units.model');
+
+
+
 
 exports.list = (req, res) => {
     

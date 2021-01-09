@@ -16,7 +16,13 @@ exports.routesConfig = function (app) {
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         unitsController.list
     ]);
-    app.get(baseUrl+'/:unitId', [
+    app.get(baseUrl+'/get-units-by-userId/:userId', [
+        // ValidationMiddleware.validJWTNeeded,
+        // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+        unitsController.listFilteredByUser
+    ]);
+
+    app.get(baseUrl+'/unit/:unitId', [
         // ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,

@@ -1,8 +1,10 @@
 const mongoose = require('../../common/services/mongoose.service').mongoose;
+
 const Schema = mongoose.Schema;
 
 const unitSchema = new Schema({
   name: String,
+  userId:{type: Schema.Types.ObjectId, ref: 'Users'},//ownerId
   address:String,
   ip:String,
   port:Number,
@@ -24,7 +26,7 @@ unitSchema.virtual('id').get(function () {
     return this._id.toHexString();
 });
 
-const Unit = mongoose.model('units', unitSchema);
+var Unit = mongoose.model('units', unitSchema);
 exports.createUnit = (unitData) => {
     const unit = new Unit(unitData);
     return unit.save();
@@ -62,6 +64,22 @@ exports.createunit = (unitData) => {
 exports.list = (perPage, page) => {
     return new Promise((resolve, reject) => {
       Unit.find()
+       .populate('userId')
+            .limit(perPage)
+            .skip(perPage * page)
+            .exec(function (err, units) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(units);
+                }
+            })
+    });
+};
+
+exports.userUnits = (userId,perPage, page) => {
+    return new Promise((resolve, reject) => {
+      Unit.find({userId:userId})
             .limit(perPage)
             .skip(perPage * page)
             .exec(function (err, units) {

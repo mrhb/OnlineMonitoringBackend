@@ -1,4 +1,4 @@
-const unitModel = require('../models/Units.model');
+const unitModel = require('../models/units.model');
 // const crypto = require('crypto');
 
 exports.insert = (req, res) => {
@@ -21,6 +21,22 @@ exports.list = (req, res) => {
         }
     }
     unitModel.list(limit, page)
+        .then((result) => {
+            res.status(200).send(result);
+        })
+};
+
+
+exports.listFilteredByUser = (req, res) => {
+    let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
+    let page = 0;
+    if (req.query) {
+        if (req.query.page) {
+            req.query.page = parseInt(req.query.page);
+            page = Number.isInteger(req.query.page) ? req.query.page : 0;
+        }
+    }
+    unitModel.userUnits(req.params.userId,limit, page)
         .then((result) => {
             res.status(200).send(result);
         })
