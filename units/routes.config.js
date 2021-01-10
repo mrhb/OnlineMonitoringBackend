@@ -22,7 +22,7 @@ exports.routesConfig = function (app) {
         unitsController.listFilteredByUser
     ]);
 
-    app.get(baseUrl+'/unit/:unitId', [
+    app.get(baseUrl+'/:unitId', [
         // ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
