@@ -15,36 +15,15 @@ exports.routesConfig = function (app) {
     //     TrendsController.insert
     // ]);
     app.get(baseUrl, [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         TrendsController.list
     ]); 
     app.post(baseUrl, [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         TrendsController.list
     ]);
-    // app.get('/trends/:unitId', [
-    //     ValidationMiddleware.validJWTNeeded,
-    //     PermissionMiddleware.minimumPermissionLevelRequired(FREE),
-    //     PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-    //     TrendsController.getById
-    // ]);
-    // app.patch('/trends/:unitId', [
-    //     ValidationMiddleware.validJWTNeeded,
-    //     PermissionMiddleware.minimumPermissionLevelRequired(FREE),
-    //     PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-    //     TrendsController.patchById
-    // ]);
-    // app.delete('/trends/:unitId', [
-    //     ValidationMiddleware.validJWTNeeded,
-    //     PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
-    //     TrendsController.removeById
-    // ]);
-
-
-
-
 app.get(mockUrl,[ trendsMockController.getData]);
 app.post(mockUrl,[ trendsMockController.getData]);
 };

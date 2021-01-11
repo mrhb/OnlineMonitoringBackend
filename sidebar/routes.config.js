@@ -12,40 +12,16 @@ const mockUrl='/mock/sidebar';
 
 
 exports.routesConfig = function (app) {
-    // app.post('/sidebar', [
-    //     sidebarController.insert
-    // ]);
     app.get(baseUrl, [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         sidebarController.list
     ]); 
     app.post(baseUrl, [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         sidebarController.unitsStatus
     ]);
-    // app.get('/sidebar/:unitId', [
-    //     ValidationMiddleware.validJWTNeeded,
-    //     PermissionMiddleware.minimumPermissionLevelRequired(FREE),
-    //     PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-    //     sidebarController.getById
-    // ]);
-    // app.patch('/sidebar/:unitId', [
-    //     ValidationMiddleware.validJWTNeeded,
-    //     PermissionMiddleware.minimumPermissionLevelRequired(FREE),
-    //     PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-    //     sidebarController.patchById
-    // ]);
-    // app.delete('/sidebar/:unitId', [
-    //     ValidationMiddleware.validJWTNeeded,
-    //     PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
-    //     sidebarController.removeById
-    // ]);
-
-
-
-
-app.get(mockUrl,[ sidebarMockController.getData]);
-app.post(mockUrl,[ sidebarMockController.getData]);
+    app.get(mockUrl,[ sidebarMockController.getData]);
+    app.post(mockUrl,[ sidebarMockController.getData]);
 };

@@ -17,19 +17,19 @@ exports.routesConfig = function (app) {
         groupsController.list
     ]);
     app.get(baseUrl+'/:id', [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         groupsController.getById
     ]);
     app.patch(baseUrl+'/:id', [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         groupsController.patchById
     ]);
     app.delete(baseUrl+'/:id', [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
         groupsController.removeById
     ]);

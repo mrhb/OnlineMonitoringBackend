@@ -12,30 +12,30 @@ exports.routesConfig = function (app) {
         unitsController.insert
     ]);
     app.get(baseUrl, [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         unitsController.list
     ]);
     app.get(baseUrl+'/get-units-by-userId/:userId', [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
         unitsController.listFilteredByUser
     ]);
 
     app.get(baseUrl+'/:unitId', [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         unitsController.getById
     ]);
     app.patch(baseUrl+'/:unitId', [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         unitsController.patchById
     ]);
     app.delete(baseUrl+'/:unitId', [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
         unitsController.removeById
     ]);
