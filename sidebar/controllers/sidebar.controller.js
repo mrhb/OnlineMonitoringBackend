@@ -57,7 +57,12 @@ trendsModel.ReadStatus().then(
                     {
                         // var start_date = moment(matched.time, 'YYYY-MM-DD HH:mm:ss');
                         // var end_date = moment();
-                        var elapsed =  	moment(matched.time, 'YYYY-MM-DD HH:mm:ss').calendar() ;
+                        var timeStamp=moment(matched.time, 'YYYY-MM-DD HH:mm:ss');
+                        var elapsed_string = timeStamp.calendar(); ;
+                        var elapsed_minute = moment.duration(moment().diff(timeStamp)).asMinutes();
+
+                        if(elapsed_minute>1)
+                        matched.status="NoCon";
                             return{
                                 "id":itm.id,
                                 "name":itm.name,
@@ -65,7 +70,7 @@ trendsModel.ReadStatus().then(
                                 "redAlarm":matched.redAlarm,
                                 "yellowAlarm":matched.yellowAlarm,
                                 "time":matched.time,
-                                "elapsed": elapsed,
+                                "elapsed": elapsed_string,
                                 "lat":itm.lat,
                                 "long":itm.long
                             };
