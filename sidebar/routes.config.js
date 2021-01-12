@@ -5,7 +5,7 @@ const ValidationMiddleware = require('../common/middlewares/auth.validation.midd
 const config = require('../common/config/env.config');
 
 const ADMIN = config.permissionLevels.ADMIN;
-const PAID = config.permissionLevels.PAID_USER;
+const PAID = config.permissionLevels.OWNER;
 const FREE = config.permissionLevels.NORMAL_USER;
 const baseUrl='/api/sidebar';
 const mockUrl='/mock/sidebar';
