@@ -42,7 +42,7 @@ exports.unitsStatus = (req, res) => {
         }
     }
     
-trendsModel.ReadStatus(req.jwt.userId).then(
+trendsModel.ReadStatus(req.jwt.ownerId).then(
         (statuses)=>
         {
             unitModel.userUnits(req.jwt.userId,limit, page)

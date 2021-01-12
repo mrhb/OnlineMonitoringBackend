@@ -34,6 +34,7 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
                 if (hash === passwordFields[1]) {
                     req.body = {
                         userId: user[0]._id,
+                        ownerId:user[0]._id,
                         email: user[0].email,
                         permissionLevel: user[0].permissionLevel,
                         provider: 'email',
