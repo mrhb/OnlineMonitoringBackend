@@ -17,12 +17,10 @@ exports.ReadTrends = (seriesInfo) =>{
   };
   
 
-  exports.ReadStatus= () =>{
+  exports.ReadStatus= (OwnerId) =>{
    
     return  InfluxDb
       .query(
-        `SELECT * FROM "telegraf"."autogen"."ModbusLogger" where "Id"!='' GROUP BY "Id" ORDER BY DESC LIMIT 1`
+        concat.concatStateQuery(OwnerId)//test: "5ff944ba580f463494acb57b"
         );   
       };
-      // `SELECT * FROM "ModbusLogger" GROUP BY "Id" ORDER BY DESC LIMIT 1`
-

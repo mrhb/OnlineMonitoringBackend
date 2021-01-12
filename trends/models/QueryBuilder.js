@@ -23,3 +23,13 @@ console.log("endDate: "+endDate);
  +`' GROUP BY time(10m) fill(linear)`;
   return  result;
 }
+
+exports.concatStateQuery=(OwnerId)=>
+{
+
+    // this function creat string like next line:
+    // `SELECT * FROM "telegraf"."autogen"."ModbusLogger" where "Id"!='' GROUP BY "Id" ORDER BY DESC LIMIT 1`
+
+  let result=  ` SELECT * FROM "telegraf"."autogen"."ModbusLogger" where "OwnerId"='`+ OwnerId +`' GROUP BY "Id" ORDER BY DESC LIMIT 1`;
+  return  result;
+}

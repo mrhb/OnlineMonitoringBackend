@@ -42,10 +42,10 @@ exports.unitsStatus = (req, res) => {
         }
     }
     
-trendsModel.ReadStatus().then(
+trendsModel.ReadStatus(req.jwt.userId).then(
         (statuses)=>
         {
-            unitModel.list(limit, page)
+            unitModel.userUnits(req.jwt.userId,limit, page)
             .then((result) => {
 
                 const merged = result.map(itm => {
