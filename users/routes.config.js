@@ -4,7 +4,7 @@ const ValidationMiddleware = require('../common/middlewares/auth.validation.midd
 const config = require('../common/config/env.config');
 
 const ADMIN = config.permissionLevels.ADMIN;
-const PAID = config.permissionLevels.PAID_USER;
+const PAID = config.permissionLevels.OWNER;
 const FREE = config.permissionLevels.NORMAL_USER;
 const baseUrl='/api/users';
 exports.routesConfig = function (app) {
@@ -27,6 +27,12 @@ exports.routesConfig = function (app) {
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         UsersController.patchById
+    ]);
+    app.patch(baseUrl+'/reset-pass/:userId', [
+        //ValidationMiddleware.validJWTNeeded,
+        // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+        // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+        UsersController.resetPassById
     ]);
     app.delete(baseUrl+'/:userId', [
         // ValidationMiddleware.validJWTNeeded,
