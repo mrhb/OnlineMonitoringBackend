@@ -4,7 +4,7 @@ const ValidationMiddleware = require('../common/middlewares/auth.validation.midd
 const config = require('../common/config/env.config');
 
 const ADMIN = config.permissionLevels.ADMIN;
-const PAID = config.permissionLevels.OWNER;
+const OWNER = config.permissionLevels.OWNER;
 const FREE = config.permissionLevels.NORMAL_USER;
 const baseUrl='/api/groups';
 exports.routesConfig = function (app) {
@@ -13,7 +13,7 @@ exports.routesConfig = function (app) {
     ]);
     app.get(baseUrl, [
         // ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+        // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         groupsController.list
     ]);
     app.get(baseUrl+'/:id', [
