@@ -28,6 +28,12 @@ exports.routesConfig = function (app) {
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         UsersController.patchById
     ]);
+    app.patch(baseUrl+'/reset-pass/:userId', [
+        //ValidationMiddleware.validJWTNeeded,
+        // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
+        // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
+        UsersController.resetPassById
+    ]);
     app.delete(baseUrl+'/:userId', [
         // ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
