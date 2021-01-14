@@ -6,7 +6,7 @@ const config = require('../common/config/env.config');
 
 const ADMIN = config.permissionLevels.ADMIN;
 const OWNER = config.permissionLevels.OWNER;
-const FREE = config.permissionLevels.NORMAL_USER;
+const FREE = config.permissionLevels.NORMAL;
 const baseUrl='/api/trends';
 const mockUrl='/mock/trends';
 
