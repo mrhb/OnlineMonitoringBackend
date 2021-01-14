@@ -19,6 +19,7 @@ exports.login = (req, res) => {
             firstName:  req.body.firstName,
             lastName: req.body.lastName,
             username:req.body.email,
+            permissionLevel:req.body.permissionLevel,
             role: req.body.permissionLevel>0?"admin":"user",
             token: token
         });

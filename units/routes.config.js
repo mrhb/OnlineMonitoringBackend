@@ -4,8 +4,8 @@ const ValidationMiddleware = require('../common/middlewares/auth.validation.midd
 const config = require('../common/config/env.config');
 
 const ADMIN = config.permissionLevels.ADMIN;
-const PAID = config.permissionLevels.PAID_USER;
-const FREE = config.permissionLevels.NORMAL_USER;
+const OWNER = config.permissionLevels.OWNER;
+const FREE = config.permissionLevels.NORMAL;
 const baseUrl='/api/units';
 exports.routesConfig = function (app) {
     app.post(baseUrl, [
@@ -13,12 +13,12 @@ exports.routesConfig = function (app) {
     ]);
     app.get(baseUrl, [
         ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+        // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         unitsController.list
     ]);
     app.get(baseUrl+'/get-units-by-userId/:userId', [
         ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+        // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         unitsController.listFilteredByUser
     ]);
 

@@ -5,8 +5,8 @@ const ValidationMiddleware = require('../common/middlewares/auth.validation.midd
 const config = require('../common/config/env.config');
 
 const ADMIN = config.permissionLevels.ADMIN;
-const PAID = config.permissionLevels.PAID_USER;
-const FREE = config.permissionLevels.NORMAL_USER;
+const OWNER = config.permissionLevels.OWNER;
+const FREE = config.permissionLevels.NORMAL;
 const baseUrl='/api/trends';
 const mockUrl='/mock/trends';
 
@@ -16,12 +16,12 @@ exports.routesConfig = function (app) {
     // ]);
     app.get(baseUrl, [
         ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+        // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         TrendsController.list
     ]); 
     app.post(baseUrl, [
         ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(PAID),
+        // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         TrendsController.list
     ]);
 app.get(mockUrl,[ trendsMockController.getData]);
