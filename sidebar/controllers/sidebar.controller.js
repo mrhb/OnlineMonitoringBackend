@@ -17,11 +17,11 @@ exports.list = (req, res) => {
         }
     }
     
-    unitModel.list(limit, page)
+    unitModel.userUnits(req.jwt.ownerId,limit, page)
         .then((result) => {
           var item=  [{
                 "GroupId":1,
-                "GroupName":"CharmShahr",
+                "GroupName":"My Units",
                 "UnitsInfo":result
                 }];
             res.status(200).send(item);
