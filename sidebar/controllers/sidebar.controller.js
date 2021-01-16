@@ -45,7 +45,7 @@ exports.unitsStatus = (req, res) => {
 trendsModel.ReadStatus(req.jwt.ownerId).then(
         (statuses)=>
         {
-            unitModel.userUnits(req.jwt.userId,limit, page)
+            unitModel.userUnits(req.jwt.ownerId,limit, page)
             .then((result) => {
 
                 const merged = result.map(itm => {

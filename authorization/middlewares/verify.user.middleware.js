@@ -49,3 +49,26 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
             }
         });
 };
+
+exports.isOwnerIdValid = (req, res, next) => {
+    UserModel.findById(req.body.ownerId)
+        .then((user)=>{
+            if(!user){
+                res.status(404).send({});
+            }else{
+                req.body=req.jwt;
+                    req.body.ownerId=user.id;
+
+                    req.body = {
+                        userId: req.jwt.userId,
+                        ownerId:user.id,
+                        email: req.jwt.email,
+                        permissionLevel: req.jwt.permissionLevel,
+                        provider: 'email',
+                        firstName:req.jwt.firstName,
+                        lastName: req.jwt.lastName,
+                    };
+                    return next();
+            }
+        });
+};
