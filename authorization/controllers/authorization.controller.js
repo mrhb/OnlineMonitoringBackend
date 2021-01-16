@@ -20,7 +20,6 @@ exports.login = (req, res) => {
             lastName: req.body.lastName,
             username:req.body.email,
             permissionLevel:req.body.permissionLevel,
-            role: req.body.permissionLevel>0?"admin":"user",
             token: token
         });
     } catch (err) {
@@ -44,7 +43,6 @@ exports.signup = (req, res) => {
             firstName:  req.body.firstName,
             lastName: req.body.lastName,
             username:req.body.email,
-            role: req.body.permissionLevel>0?"admin":"user",
             token: token
         });
     } catch (err) {
