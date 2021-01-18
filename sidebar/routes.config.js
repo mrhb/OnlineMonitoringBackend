@@ -18,7 +18,8 @@ exports.routesConfig = function (app) {
         sidebarController.list
     ]); 
     app.post(baseUrl, [
-        ValidationMiddleware.validJWTNeeded,
+      //  ValidationMiddleware.validJWTNeeded,
+      
         // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         sidebarController.unitsStatus
     ]);

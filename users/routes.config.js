@@ -12,7 +12,8 @@ exports.routesConfig = function (app) {
         UsersController.insert
     ]);
     app.get(baseUrl, [
-        ValidationMiddleware.validJWTNeeded,
+       // ValidationMiddleware.validJWTNeeded,
+       
         // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         UsersController.list
     ]);
