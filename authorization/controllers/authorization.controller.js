@@ -16,6 +16,7 @@ exports.login = (req, res) => {
             accessToken: token, 
             refreshToken: refresh_token,
             id: req.body.userId,
+            ownerId: req.body.ownerId,
             firstName:  req.body.firstName,
             lastName: req.body.lastName,
             username:req.body.email,
