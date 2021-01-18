@@ -12,7 +12,7 @@ exports.routesConfig = function (app) {
         UsersController.insert
     ]);
     app.get(baseUrl, [
-       // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
        
         // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         UsersController.list
@@ -30,13 +30,13 @@ exports.routesConfig = function (app) {
         UsersController.patchById
     ]);
     app.patch(baseUrl+'/reset-pass/:userId', [
-        //ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         UsersController.resetPassById
     ]);
     app.delete(baseUrl+'/:userId', [
-        // ValidationMiddleware.validJWTNeeded,
+         ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
         UsersController.removeById
     ]);
