@@ -10,6 +10,10 @@ exports.routesConfig = function (app) {
         VerifyUserMiddleware.isPasswordAndUserMatch,
         AuthorizationController.login
     ]);
+    app.get(baseUrl+'/owners', [
+        // AuthValidationMiddleware.validJWTNeeded,
+        VerifyUserMiddleware.getOwners
+    ]);
     app.post(baseUrl+'/setOwnerId', [
         AuthValidationMiddleware.validJWTNeeded,
         VerifyUserMiddleware.isOwnerIdValid,

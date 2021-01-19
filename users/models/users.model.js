@@ -25,6 +25,9 @@ userSchema.findById = function (cb) {
 const User = mongoose.model('Users', userSchema);
 
 
+exports.findBypPermissionLevel = (permissionLevel) => {
+    return User.find({permissionLevel: permissionLevel});
+};
 exports.findByEmail = (email) => {
     return User.find({email: email});
 };

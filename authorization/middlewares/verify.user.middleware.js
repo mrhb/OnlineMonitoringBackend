@@ -1,4 +1,6 @@
 const UserModel = require('../../users/models/users.model');
+const config = require('../../common/config/env.config');
+
 const crypto = require('crypto');
 
 exports.hasAuthValidFields = (req, res, next) => {
@@ -49,6 +51,18 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
         });
 };
 
+const OWNER = config.permissionLevels.OWNER;
+
+exports.getOwners = (req, res, next) => {
+    UserModel.findBypPermissionLevel(OWNER)
+        .then((list)=>{
+            if(!list[0]){
+                res.status(404).send({});
+            }else{
+                res.status(201).send(list);
+                           }
+        });
+};
 exports.isOwnerIdValid = (req, res, next) => {
     UserModel.findById(req.body.ownerId)
         .then((user)=>{
