@@ -26,7 +26,7 @@ MonitoringDb
   .getDatabaseNames()
   .then((names) => {
     if (!names.includes("telegraf")) {
-      return MonitoringDb.createDatabase("telegraf");
+     // return MonitoringDb.createDatabase("telegraf");
     }
   })
  

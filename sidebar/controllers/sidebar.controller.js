@@ -41,7 +41,9 @@ exports.unitsStatus = (req, res) => {
             page = Number.isInteger(req.query.page) ? req.query.page : 0;
         }
     }
-    
+    trendsModel.ReadAlarms(req.jwt.ownerId).then(
+        (Alarms)=>
+    {
 trendsModel.ReadStatus(req.jwt.ownerId).then(
         (statuses)=>
         {
@@ -50,10 +52,9 @@ trendsModel.ReadStatus(req.jwt.ownerId).then(
 
                 const merged = result.map(itm => {
                     var matched=statuses.find((item) => (item.Id === itm.id) && item);
-
-                    
+                    var matchedAlarms=Alarms.find((item) => (item.Id === itm.id) && item);
                     // return {matched,itm};
-                    if(matched)
+                    if(matched && matchedAlarms)
                     {
                         // var start_date = moment(matched.time, 'YYYY-MM-DD HH:mm:ss');
                         // var end_date = moment();
@@ -69,7 +70,7 @@ trendsModel.ReadStatus(req.jwt.ownerId).then(
                                 "state":matched.status,
                                 "redAlarm":matched.redAlarm,
                                 "yellowAlarm":matched.yellowAlarm,
-                                "AlarmList":matched.AlarmList,
+                                "AlarmList":matchedAlarms.AlarmList,
                                 "time":matched.time,
                                 "elapsed": elapsed_string,
                                 "lat":itm.lat,
@@ -96,6 +97,7 @@ trendsModel.ReadStatus(req.jwt.ownerId).then(
                 })
             }
         )
+    })
 
 };
 // exports.getById = (req, res) => {

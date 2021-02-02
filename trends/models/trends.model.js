@@ -24,3 +24,11 @@ exports.ReadTrends = (seriesInfo) =>{
         concat.concatStateQuery(OwnerId)//test: "5ff944ba580f463494acb57b"
         );   
       };
+   exports.ReadAlarms= (OwnerId) =>{
+   
+    return  InfluxDb
+      .query(
+        concat.concatAlarmQuery(OwnerId)//test: "5ff944ba580f463494acb57b"
+        );   
+      };
+
