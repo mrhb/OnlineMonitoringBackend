@@ -6,7 +6,7 @@ exports.ReadTrends = (seriesInfo) =>{
   var unitId=seriesInfo.metricsInfo[0].Unit.id;
 
   for (i in seriesInfo.metricsInfo) {
-    metrics[i]= seriesInfo.metricsInfo[i].Measurment;
+    metrics[i]= seriesInfo.metricsInfo[i].metricName;
   }
 
   return  InfluxDb

@@ -6,7 +6,7 @@ exports.ReadSidebar = (seriesInfo) =>{
   var unitId=seriesInfo.metricsInfo[0].Unit.UnitId;
 
   for (i in seriesInfo.metricsInfo) {
-    metrics[i]= seriesInfo.metricsInfo[i].Measurment;
+    metrics[i]= seriesInfo.metricsInfo[i].metricName;
   }
 
   return  InfluxDb
