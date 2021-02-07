@@ -23,14 +23,12 @@ app.get('/', (req,res) => {
 
 app.get('/uploads/*', (req,res) => {
     res.sendFile(Root+"/uploads/"+req.params[0])
-    // res.sendFile(Root+"/uploads/profile_pic-1612686212654.jpg")
     });
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'uploads/');
     },
-
     // By default, multer removes file extensions so let's add them back
     filename: function(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
