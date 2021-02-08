@@ -57,9 +57,9 @@ router.get('/', function(req, res, next) {
     res.sendFile(__dirname+"/index.html")
 });
 
-router.use(express.static('public'))
+router.use(express.static(process.env.AVATAR_STORAGE))
 
-router.post('/advanced-upload', upload.single('profile_pic'), (req, res) => {
+router.post('/avatar-upload', upload.single(process.env.AVATAR_FIELD), (req, res) => {
     var files;
 	var file = req.file.filename;
 	var matches = file.match(/^(.+?)_.+?\.(.+)$/i);
