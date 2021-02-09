@@ -82,6 +82,8 @@ exports.isOwnerIdValid = (req, res, next) => {
                         provider: 'email',
                         firstName:req.jwt.firstName,
                         lastName: req.jwt.lastName,
+                        avatarPath: user.avatarPath,
+
                     };
                     return next();
             }
