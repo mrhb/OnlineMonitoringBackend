@@ -101,4 +101,8 @@ router.post('/avatar-upload', upload.single(process.env.AVATAR_FIELD), (req, res
 
 
 
-module.exports = router;
+// module.exports = router;
+module.exports = { 
+    router:router,
+    upload:upload
+  }

@@ -42,6 +42,8 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
                         provider: 'email',
                         firstName: user[0].firstName,
                         lastName: user[0].lastName,
+                        avatarPath: user[0].avatarPath,
+
                     };
                     return next();
                 } else {

@@ -7,5 +7,5 @@ var avatar = require('./profile/avatars');
 const port = process.env.PORT || 3001;
 const app = express();
 app.listen(port, () => console.log(`Listening on port ${port}...`));
-app.use('/avatar', avatar);
+app.use('/avatar', avatar.router);
  

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const AuthorizationRouter = require('./authorization/routes.config');
 const UsersRouter = require('./users/routes.config');
+const ProfileRouter = require('./profile/routes.config');
 const UnitsRouter = require('./units/routes.config');
 const GroupsRouter = require('./groups/routes.config');
 const TrendssRouter = require('./trends/routes.config');
@@ -34,6 +35,8 @@ UnitsRouter.routesConfig(app);
 GroupsRouter.routesConfig(app);
 TrendssRouter.routesConfig(app);
 SidebarRouter.routesConfig(app);
+ProfileRouter.routesConfig(app);
+app.use('/uploads',express.static(process.env.AVATAR_STORAGE))
 
 app.get('/*', (req,res) => {
     res.sendFile(Root+"/index.html")

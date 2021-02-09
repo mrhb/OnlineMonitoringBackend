@@ -21,6 +21,7 @@ exports.login = (req, res) => {
             lastName: req.body.lastName,
             username:req.body.email,
             permissionLevel:req.body.permissionLevel,
+            avatarPath:req.body.avatarPath,
             token: token
         });
     } catch (err) {
