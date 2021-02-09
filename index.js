@@ -36,7 +36,7 @@ GroupsRouter.routesConfig(app);
 TrendssRouter.routesConfig(app);
 SidebarRouter.routesConfig(app);
 ProfileRouter.routesConfig(app);
-app.use('/uploads',express.static(process.env.AVATAR_STORAGE))
+app.use('/uploads/avatars',express.static(process.env.AVATAR_STORAGE))
 
 app.get('/*', (req,res) => {
     res.sendFile(Root+"/index.html")

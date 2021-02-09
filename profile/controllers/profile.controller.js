@@ -47,10 +47,10 @@ exports.setAvatarById = (req, res) => {
     var avatarPath = path.join(req.file.baseUrl, files[0]).replace(/[\\\/]+/g, '/').replace(/^[\/]+/g, '');
 
     req.body.avatarPath = avatarPath;
-
+    
     UserModel.patchUser(req.params.userId, req.body)
-        .then((result) => {
-            console.log(result);
+    .then((result) => {
+        console.log(avatarPath);
         res.status(200).send({});
         });
 };
