@@ -36,8 +36,8 @@ exports.routesConfig = function (app) {
         ProfileController.resetPassById
     ]);
     app.post(baseUrl+'/set-avatar/:userId', [
-        // ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(ADMIN),
+        ValidationMiddleware.validJWTNeeded,
+        PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         avatar.upload.single(process.env.AVATAR_FIELD),
         ProfileController.setAvatarById
     ]);
