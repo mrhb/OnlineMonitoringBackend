@@ -52,7 +52,23 @@ exports.isPasswordAndUserMatch = (req, res, next) => {
             }
         });
 };
-
+exports.isPasswordAndUserIdMatch = (req, res, next) => {
+    UserModel.findById(req.params.userId)
+        .then((user)=>{
+            if(!user){
+                res.status(404).send({});
+            }else{
+                let passwordFields = user.password.split('$');
+                let salt = passwordFields[0];
+                let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
+                if (hash === passwordFields[1]) {
+                    return next();
+                } else {
+                    return res.status(400).send({errors: ['Invalid id or password']});
+                }
+            }
+        });
+};
 const OWNER = config.permissionLevels.OWNER;
 
 exports.getOwners = (req, res, next) => {

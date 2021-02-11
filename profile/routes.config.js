@@ -3,6 +3,8 @@ var express = require('express');
 const ProfileController = require('./controllers/profile.controller');
 const PermissionMiddleware = require('../common/middlewares/auth.permission.middleware');
 const ValidationMiddleware = require('../common/middlewares/auth.validation.middleware');
+const VerifyUserMiddleware = require('../authorization/middlewares/verify.user.middleware');
+
 const config = require('../common/config/env.config');
 
 
@@ -29,11 +31,13 @@ exports.routesConfig = function (app) {
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         ProfileController.patchById
     ]);
-    app.patch(baseUrl+'/reset-pass/:userId', [
-        ValidationMiddleware.validJWTNeeded,
+    app.patch(baseUrl+'/set-pass/:userId', [
+        // ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-        ProfileController.resetPassById
+        
+        VerifyUserMiddleware.isPasswordAndUserIdMatch,
+        ProfileController.setPassById
     ]);
     app.post(baseUrl+'/set-avatar/:userId', [
         ValidationMiddleware.validJWTNeeded,

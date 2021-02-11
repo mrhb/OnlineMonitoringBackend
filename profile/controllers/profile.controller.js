@@ -18,9 +18,10 @@ exports.patchById = (req, res) => {
 
 };
 
-exports.resetPassById = (req, res) => {
+exports.setPassById = (req, res) => {
         let salt = crypto.randomBytes(16).toString('base64');
-        let hash = crypto.createHmac('sha512', salt).update("123456").digest("base64");
+        let hash = crypto.createHmac('sha512', salt).update(req.body.newPassword).digest("base64");
+
         req.body.password = salt + "$" + hash;
 
     UserModel.patchUser(req.params.userId, req.body)
