@@ -20,7 +20,21 @@ const unitSchema = new Schema({
   gate:String,
   disable:Boolean,
   comm:Boolean,
+  maintenances: [{
+        name: { type: String, required: true, max: 100 },
+        name: String,
+        criteria:{
+            type: String,
+            enum: ['day','runHour']
+        },
+        duration:Number,
+        runHour:Number,
+        date:Number
+    }],
 });
+
+
+  
 
 unitSchema.virtual('id').get(function () {
     return this._id.toHexString();
