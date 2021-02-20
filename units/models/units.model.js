@@ -100,6 +100,12 @@ exports.patchunit = (id, unitData) => {
     }, unitData);
 };
 
+exports.patchUnitMaintenances = (id, maintenances) => {
+    return Unit.findOneAndUpdate({
+        _id: id
+    }, { maintenances: maintenances });
+};
+
 exports.removeById = (unitId) => {
     return new Promise((resolve, reject) => {
         Unit.deleteMany({_id: unitId}, (err) => {

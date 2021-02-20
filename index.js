@@ -11,6 +11,7 @@ const UnitsRouter = require('./units/routes.config');
 const GroupsRouter = require('./groups/routes.config');
 const TrendssRouter = require('./trends/routes.config');
 const SidebarRouter = require('./sidebar/routes.config');
+const MaintenanceRouter = require('./maintenance/routes.config');
 //const Root="F:/mr.Hajjar/OnlineMonitoring/UI_SPA/uiSPA/dist/uiSPA"
 const Root=__dirname+'\\uiSPA_Prod';
 app.use(function (req, res, next) {
@@ -36,6 +37,7 @@ GroupsRouter.routesConfig(app);
 TrendssRouter.routesConfig(app);
 SidebarRouter.routesConfig(app);
 ProfileRouter.routesConfig(app);
+MaintenanceRouter.routesConfig(app);
 app.use('/uploads/avatars',express.static(process.env.AVATAR_STORAGE))
 
 app.get('/*', (req,res) => {
