@@ -8,22 +8,10 @@ const OWNER = config.permissionLevels.OWNER;
 const FREE = config.permissionLevels.NORMAL;
 const baseUrl='/api/maintenance';
 exports.routesConfig = function (app) {
-    app.get(baseUrl, [
-        ValidationMiddleware.validJWTNeeded,
-       
-        // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
-        maintenanceController.list
-    ]);
-    app.get(baseUrl+'/:id', [
-        ValidationMiddleware.validJWTNeeded,
-        // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
-        // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-        maintenanceController.getById
-    ]);
     app.patch(baseUrl+'/:id', [
-        // ValidationMiddleware.validJWTNeeded,
+        ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
-        maintenanceController.patchById
+        maintenanceController.patchMaintenancesById
     ]);
 };
