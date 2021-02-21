@@ -17,7 +17,7 @@ exports.ReadTrends = (seriesInfo) =>{
   };
   
 
-  exports.ReadStatus= (OwnerId) =>{
+  exports.ReadStatusByOwnerId= (OwnerId) =>{
    
     return  InfluxDb
       .query(

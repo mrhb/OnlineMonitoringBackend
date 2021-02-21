@@ -44,7 +44,7 @@ exports.unitsStatus = (req, res) => {
     trendsModel.ReadAlarms(req.jwt.ownerId).then(
         (Alarms)=>
     {
-trendsModel.ReadStatus(req.jwt.ownerId).then(
+trendsModel.ReadStatusByOwnerId(req.jwt.ownerId).then(
         (statuses)=>
         {
             unitModel.userUnits(req.jwt.ownerId,limit, page)
