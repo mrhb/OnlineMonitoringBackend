@@ -21,7 +21,7 @@ exports.routesConfig = function (app) {
         maintenanceController.getById
     ]);
     app.patch(baseUrl+'/:id', [
-        ValidationMiddleware.validJWTNeeded,
+        // ValidationMiddleware.validJWTNeeded,
         // PermissionMiddleware.minimumPermissionLevelRequired(FREE),
         // PermissionMiddleware.onlySameUserOrAdminCanDoThisAction,
         maintenanceController.patchById

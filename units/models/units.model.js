@@ -22,7 +22,6 @@ const unitSchema = new Schema({
   comm:Boolean,
   maintenances: [{
         name: { type: String, required: true, max: 100 },
-        name: String,
         criteria:{
             type: String,
             enum: ['day','runHour']
@@ -114,10 +113,10 @@ exports.patchunit = (id, unitData) => {
     }, unitData);
 };
 
-exports.patchUnitMaintenances = (id, maintenances) => {
+exports.patchUnitMaintenances = (id, maintenancesInfo) => {
     return Unit.findOneAndUpdate({
         _id: id
-    }, { maintenances: maintenances });
+    }, { maintenances: maintenancesInfo },{upsert:true});
 };
 
 exports.removeById = (unitId) => {
