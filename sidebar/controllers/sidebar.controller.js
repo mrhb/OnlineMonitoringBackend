@@ -74,7 +74,8 @@ trendsModel.ReadStatusByOwnerId(req.jwt.ownerId).then(
                                 "time":matched.time,
                                 "elapsed": elapsed_string,
                                 "lat":itm.lat,
-                                "long":itm.long
+                                "long":itm.long,
+                                "maintenances":itm.maintenances
                             };
                     }
                         else

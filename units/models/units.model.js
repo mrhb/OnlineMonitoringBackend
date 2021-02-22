@@ -28,7 +28,7 @@ const unitSchema = new Schema({
         },
         duration:Number,
         runHour:Number,
-        date:Number
+        date:Date
     }],
 });
 

@@ -3,8 +3,8 @@ const unitModel = require('../../units/models/units.model');
 
 
 exports.patchMaintenancesById = (req, res) => {
-    if (req.body.maintenances) {
-        unitModel.patchUnitMaintenances(req.params.id, req.body.maintenances)
+    if (req.body) {
+        unitModel.patchUnitMaintenances(req.params.id, req.body)
         .then((result) => {
             res.status(204).send({});
         });
