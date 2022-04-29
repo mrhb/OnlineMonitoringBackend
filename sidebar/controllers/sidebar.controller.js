@@ -53,6 +53,11 @@ trendsModel.ReadStatusByOwnerId(req.jwt.ownerId).then(
                 const merged = result.map(itm => {
                     var matched=statuses.find((item) => (item.Id === itm.id) && item);
                     var matchedAlarms=Alarms.find((item) => (item.Id === itm.id) && item);
+                    if(!matchedAlarms){
+                        matchedAlarms={
+                            AlarmList:"no  Alarms"
+                        }
+                    }
                     // return {matched,itm};
                     if(matched && matchedAlarms)
                     {
