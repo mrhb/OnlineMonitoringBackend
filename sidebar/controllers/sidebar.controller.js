@@ -41,15 +41,9 @@ exports.unitsStatus = (req, res) => {
             page = Number.isInteger(req.query.page) ? req.query.page : 0;
         }
     }
-    trendsModel.ReadAlarms(req.jwt.ownerId).then(
-        (Alarms)=>
-    {
-trendsModel.ReadStatusByOwnerId(req.jwt.ownerId).then(
-        (statuses)=>
-        {
-            unitModel.userUnits(req.jwt.ownerId,limit, page)
-            .then((result) => {
-
+    trendsModel.ReadAlarms(req.jwt.ownerId).then((Alarms)=>{
+        trendsModel.ReadStatusByOwnerId(req.jwt.ownerId).then((statuses)=>{
+            unitModel.userUnits(req.jwt.ownerId,limit, page).then((result) => {
                 const merged = result.map(itm => {
                     var matched=statuses.find((item) => (item.Id === itm.id) && item);
                     var matchedAlarms=Alarms.find((item) => (item.Id === itm.id) && item);
@@ -100,11 +94,10 @@ trendsModel.ReadStatusByOwnerId(req.jwt.ownerId).then(
                         };
 
                 });
-                    console.log(merged);
-                    res.status(200).send(merged);
-                })
-            }
-        )
+                console.log(merged);
+                res.status(200).send(merged);
+            })
+        })
     })
 
 };
