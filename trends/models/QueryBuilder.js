@@ -24,6 +24,17 @@ console.log("endDate: "+endDate);
   return  result;
 }
 
+
+exports.concatUnitDetailsQuery=(UnitId)=>
+{
+
+    // this function creat string like next line:
+    // `SELECT * FROM "telegraf"."autogen"."ModbusLogger" where "Id"!='' GROUP BY "Id" ORDER BY DESC LIMIT 1`
+
+  let result=  ` SELECT * FROM "telegraf"."autogen"."ModbusLogger" where "Id"='`+ UnitId +`' GROUP BY "Id" ORDER BY DESC LIMIT 1`;
+  return  result;
+}
+
 exports.concatStateQuery=(OwnerId)=>
 {
 

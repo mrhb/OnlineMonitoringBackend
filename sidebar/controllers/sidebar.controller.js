@@ -101,6 +101,24 @@ exports.unitsStatus = (req, res) => {
     })
 
 };
+
+
+exports.unitDetails = (req, res) => {
+    
+    let limit = req.query.limit && req.query.limit <= 100 ? parseInt(req.query.limit) : 10;
+    let page = 0;
+    if (req.query) {
+        if (req.query.page) {
+            req.query.page = parseInt(req.query.page);
+            page = Number.isInteger(req.query.page) ? req.query.page : 0;
+        }
+    }
+    trendsModel.ReadUnitDetails(req.params.unitId).then((details)=>{
+        res.status(200).send(details);
+
+    })
+
+};
 // exports.getById = (req, res) => {
 //     UserModel.findById(req.params.userId)
 //         .then((result) => {

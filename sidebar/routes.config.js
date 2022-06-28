@@ -23,6 +23,13 @@ exports.routesConfig = function (app) {
         // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         sidebarController.unitsStatus
     ]);
+   
+    app.post(baseUrl +'/get-details-by-unitId/:unitId', [
+        ValidationMiddleware.validJWTNeeded,
+      
+        // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
+        sidebarController.unitDetails
+    ]);
     app.get(mockUrl,[ sidebarMockController.getData]);
     app.post(mockUrl,[ sidebarMockController.getData]);
 };
