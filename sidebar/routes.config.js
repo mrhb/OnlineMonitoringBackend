@@ -24,8 +24,8 @@ exports.routesConfig = function (app) {
         sidebarController.unitsStatus
     ]);
    
-    app.post(baseUrl +'/get-details-by-unitId/:unitId', [
-        ValidationMiddleware.validJWTNeeded,
+    app.get(baseUrl +'/get-details-by-unitId/:unitId', [
+       // ValidationMiddleware.validJWTNeeded,
       
         // PermissionMiddleware.minimumPermissionLevelRequired(OWNER),
         sidebarController.unitDetails
