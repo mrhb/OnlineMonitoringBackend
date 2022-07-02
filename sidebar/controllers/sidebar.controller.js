@@ -113,9 +113,24 @@ exports.unitDetails = (req, res) => {
             page = Number.isInteger(req.query.page) ? req.query.page : 0;
         }
     }
-    trendsModel.ReadUnitDetails(req.params.unitId).then((details)=>{
+    trendsModel.ReadUnitDetails(req.params.unitId).then((data)=>{
+        moment.updateLocale('en', {
+            longDateFormat : {
+                LT: "h:mm:ss A", // <----------- add :ss
+                L: "MM/DD/YYYY",
+                l: "M/D/YYYY",
+                LL: "MMMM Do YYYY",
+                ll: "MMM D YYYY",
+                LLL: "MMMM Do YYYY LT",
+                lll: "MMM D YYYY LT",
+                LLLL: "dddd, MMMM Do YYYY LT",
+                llll: "ddd, MMM D YYYY LT"
+            }
+        });
+        var details=[]
+        if(data){
+            details=data[0];
 
-        if(details){
             var timeStamp=moment(details.time, 'YYYY-MM-DD HH:mm:ss');
             var elapsed_string = timeStamp.calendar(); ;
             details["elapsed"]=elapsed_string ;
