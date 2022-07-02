@@ -114,6 +114,12 @@ exports.unitDetails = (req, res) => {
         }
     }
     trendsModel.ReadUnitDetails(req.params.unitId).then((details)=>{
+
+        if(details){
+            var timeStamp=moment(details.time, 'YYYY-MM-DD HH:mm:ss');
+            var elapsed_string = timeStamp.calendar(); ;
+            details["elapsed"]=elapsed_string ;
+                    }
         res.status(200).send(details);
 
     })
