@@ -25,15 +25,13 @@ console.log("endDate: "+endDate);
 }
 
 
-exports.concatUnitDetailsQuery=(UnitId)=>
+exports.concatUnitDetailsQuery=(UnitId)=>//`603f5eea8e238f8000000000`
 {
 
     // this function creat string like next line:
     // `SELECT * FROM "telegraf"."autogen"."ModbusLogger" where "Id"!='' GROUP BY "Id" ORDER BY DESC LIMIT 1`
 
-  //let result=  ` SELECT * FROM "telegraf"."autogen"."ModbusLogger" where "Id"='`+ UnitId +`' GROUP BY "Id" ORDER BY DESC LIMIT 1`;
-  //let result=  ` SELECT * FROM "telegraf"."autogen"."ModbusLogger" where "OwnerId"='603f5eea8e238f8000000000' GROUP BY "Id" ORDER BY DESC LIMIT 1`;
-  let result=  `SELECT * FROM "ModbusLogger" WHERE ("Id" = '`+`603f5eea8e238f8000000000`+`') ORDER BY DESC LIMIT 1`;
+  let result=  `SELECT * FROM "ModbusLogger" WHERE ("Id" = '`+UnitId+`') ORDER BY DESC LIMIT 1`;
   return  result;
 }
 
